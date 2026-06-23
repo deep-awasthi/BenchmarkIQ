@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:benchmarkiq_test;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+  sql:
+    init:
+      mode: never
+
+  cache:
+    type: none
+
+app:
+  jwt:
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+    expiration-ms: 3600000
+    refresh-expiration-ms: 86400000
+
+  load-test:
+    max-concurrent-users: 10
+    max-duration-seconds: 30
+    http-client-timeout-ms: 5000
+    thread-pool-size: 10
+
+  cleanup:
+    max-result-age-days: 1
+    cron: "0 0 2 * * ?"
+
+logging:
+  level:
+    com.benchmarkiq: WARN
+    org.springframework.security: WARN
